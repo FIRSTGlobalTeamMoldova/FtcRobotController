@@ -7,6 +7,7 @@ import com.arcrobotics.ftclib.gamepad.ToggleButtonReader;
 import com.arcrobotics.ftclib.hardware.ServoEx;
 import com.arcrobotics.ftclib.hardware.SimpleServo;
 import com.arcrobotics.ftclib.hardware.motors.Motor;
+import com.arcrobotics.ftclib.hardware.motors.MotorGroup;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -28,7 +29,10 @@ public class Main extends LinearOpMode {
         conveyor.setRunMode(Motor.RunMode.VelocityControl);
         conveyor.setVeloCoefficients(1, 0.05, 0);
 
-        Motor pump = new Motor(hardwareMap, "pump");
+        Motor hugepump = new Motor(hardwareMap, "pump1");
+        Motor lilpump = new Motor(hardwareMap, "pump2");
+
+        MotorGroup pump = new MotorGroup(lilpump, hugepump);
 
         servo.setPosition(1);
 
